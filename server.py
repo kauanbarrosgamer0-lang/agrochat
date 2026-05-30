@@ -307,6 +307,17 @@ BLOQUEIO_MINUTOS = 15
 def verificar_limite_tentativas(ip, email):
     """Retorna True se o IP/email está bloqueado por excesso de tentativas"""
     conn = get_db()
+    # Garante que a tabela existe
+    try:
+        conn.execute("""CREATE TABLE IF NOT EXISTS tentativas_login (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ip TEXT NOT NULL,
+            email TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime'))
+        )""")
+        conn.commit()
+    except Exception:
+        pass
     limite = datetime.now() - timedelta(minutes=BLOQUEIO_MINUTOS)
     count = conn.execute("""
         SELECT COUNT(*) FROM tentativas_login
@@ -317,6 +328,14 @@ def verificar_limite_tentativas(ip, email):
 
 def registrar_tentativa(ip, email):
     conn = get_db()
+    try:
+        conn.execute("""CREATE TABLE IF NOT EXISTS tentativas_login (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ip TEXT NOT NULL, email TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime'))
+        )""")
+    except Exception:
+        pass
     conn.execute("INSERT INTO tentativas_login (ip, email) VALUES (?,?)", (ip, email))
     conn.commit()
     conn.close()
