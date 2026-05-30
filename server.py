@@ -180,6 +180,43 @@ def init_db():
         FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
     )""")
 
+    # Migração automática — garante todas as tabelas existem
+    migracoes = [
+        """CREATE TABLE IF NOT EXISTS tentativas_login (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ip TEXT NOT NULL,
+            email TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime'))
+        )""",
+        """CREATE TABLE IF NOT EXISTS chats (
+            id TEXT PRIMARY KEY,
+            usuario_id INTEGER NOT NULL,
+            titulo TEXT NOT NULL,
+            criado_em TEXT DEFAULT (datetime('now','localtime')),
+            atualizado_em TEXT DEFAULT (datetime('now','localtime')),
+            FOREIGN KEY(usuario_id) REFERENCES usuarios(id)
+        )""",
+        """CREATE TABLE IF NOT EXISTS chat_mensagens (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            chat_id TEXT NOT NULL,
+            role TEXT NOT NULL,
+            content TEXT NOT NULL,
+            timestamp INTEGER NOT NULL,
+            FOREIGN KEY(chat_id) REFERENCES chats(id)
+        )""",
+    ]
+    for sql in migracoes:
+        try:
+            c.execute(sql)
+        except Exception:
+            pass
+    # Adiciona coluna expira_em se não existir
+    try:
+        c.execute("ALTER TABLE sessoes ADD COLUMN expira_em TEXT")
+        c.execute("UPDATE sessoes SET expira_em = datetime('now', '+24 hours', 'localtime') WHERE expira_em IS NULL")
+    except Exception:
+        pass
+
     # Cria admin padrão se não existir
     admin_senha = hash_senha("admin123")
     c.execute("""INSERT OR IGNORE INTO usuarios (email, senha_hash, admin, ativo, plano)
