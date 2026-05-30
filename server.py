@@ -20,12 +20,23 @@ CORS(app)
 # Serve o HTML na raiz
 @app.route('/')
 def index():
-    # Tenta abrir index.html, depois pagina inical.html, depois agrochat.html
-    pasta = os.path.dirname(os.path.abspath(__file__))
-    for nome in ['index.html', 'pagina inical.html', 'agrochat.html']:
-        if os.path.exists(os.path.join(pasta, nome)):
-            return send_from_directory(pasta, nome)
-    return "Coloque o arquivo HTML na mesma pasta do server.py", 404
+    # Busca o HTML em múltiplos locais possíveis
+    base = os.path.dirname(os.path.abspath(__file__))
+    locais = [
+        base,
+        os.getcwd(),
+        '/app',
+        os.path.join(base, 'static'),
+    ]
+    nomes = ['index.html', 'pagina inical.html', 'agrochat.html']
+    for pasta in locais:
+        for nome in nomes:
+            caminho = os.path.join(pasta, nome)
+            if os.path.exists(caminho):
+                return send_from_directory(pasta, nome)
+    # Lista arquivos para debug
+    arquivos = os.listdir(base)
+    return f"HTML não encontrado. Arquivos em {base}: {arquivos}", 404
 
 # ── CONFIGURAÇÃO (via variáveis de ambiente no Railway) ──
 DB_PATH = os.environ.get("DB_PATH", "agrochat.db")
