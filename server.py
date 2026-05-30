@@ -70,14 +70,38 @@ def garantir_tabelas():
     """Cria todas as tabelas necessárias se não existirem — roda a cada request."""
     conn = get_db()
     sqls = [
-        """CREATE TABLE IF NOT EXISTS tentativas_login (
+        """CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            ip TEXT NOT NULL, email TEXT,
+            email TEXT UNIQUE NOT NULL,
+            senha_hash TEXT NOT NULL,
+            admin INTEGER DEFAULT 0,
+            ativo INTEGER DEFAULT 1,
+            bloqueado_ate TEXT DEFAULT NULL,
+            plano TEXT DEFAULT 'gratuito',
             criado_em TEXT DEFAULT (datetime('now','localtime')))""",
         """CREATE TABLE IF NOT EXISTS sessoes (
             token TEXT PRIMARY KEY, usuario_id INTEGER NOT NULL,
             criado_em TEXT DEFAULT (datetime('now','localtime')),
             expira_em TEXT)""",
+        """CREATE TABLE IF NOT EXISTS tentativas_login (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            ip TEXT NOT NULL, email TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime')))""",
+        """CREATE TABLE IF NOT EXISTS logs (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            tipo TEXT NOT NULL, descricao TEXT, email TEXT, ip TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime')))""",
+        """CREATE TABLE IF NOT EXISTS diario (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            usuario_id INTEGER NOT NULL,
+            titulo TEXT NOT NULL, conteudo TEXT NOT NULL,
+            cultura TEXT, area TEXT,
+            criado_em TEXT DEFAULT (datetime('now','localtime')))""",
+        """CREATE TABLE IF NOT EXISTS avisos (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            titulo TEXT NOT NULL, mensagem TEXT NOT NULL,
+            ativo INTEGER DEFAULT 1,
+            criado_em TEXT DEFAULT (datetime('now','localtime')))""",
         """CREATE TABLE IF NOT EXISTS chats (
             id TEXT PRIMARY KEY, usuario_id INTEGER NOT NULL,
             titulo TEXT NOT NULL,
@@ -103,6 +127,15 @@ def garantir_tabelas():
             conn.execute(alter)
         except Exception:
             pass
+    # Cria admin padrão se não existir
+    import hashlib
+    admin_email = os.environ.get("ADMIN_EMAIL", "admin@agrochat.com")
+    admin_hash = hashlib.sha256("admin123".encode()).hexdigest()
+    try:
+        conn.execute("INSERT OR IGNORE INTO usuarios (email, senha_hash, admin, ativo) VALUES (?,?,1,1)",
+                     (admin_email, admin_hash))
+    except Exception:
+        pass
     conn.commit()
     conn.close()
 
