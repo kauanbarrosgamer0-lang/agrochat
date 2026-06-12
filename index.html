@@ -351,156 +351,7 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
 .reveal-delay-3{transition-delay:.36s;}
 
 /* ── PLANOS ── */
-#planos{
-  background:var(--bg);border-top:1px solid var(--border);
-  padding:0;
-}
-.planos-header{
-  padding:90px 64px 60px;max-width:1100px;margin:0 auto;
-}
-.planos-hero-title{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:clamp(2.8rem,5vw,4.2rem);
-  line-height:1.05;letter-spacing:-2px;color:var(--text);
-  margin-bottom:0;
-}
-.planos-hero-title .pix-word{
-  font-style:italic;font-weight:800;
-  color:var(--accent2);
-  position:relative;
-}
-.planos-user-tag{
-  position:absolute;top:16px;right:64px;
-  font-size:.75rem;color:var(--text3);
-  font-weight:500;
-}
 
-.planos-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:0;padding:0 64px 90px;
-  max-width:1100px;margin:0 auto;
-  align-items:start;
-}
-
-/* Card base */
-.plan-card{
-  background:var(--surface);
-  border:1px solid var(--border);
-  border-radius:16px;
-  padding:36px 32px 28px;
-  position:relative;
-  transition:transform .25s,box-shadow .25s;
-  margin:0 8px;
-}
-.plan-card:hover{transform:translateY(-4px);}
-
-/* Card PRO — destaque */
-.plan-card.pro{
-  background:linear-gradient(160deg,#0e1a0b 0%,#0a1208 100%);
-  border:1px solid rgba(95,168,50,.25);
-  box-shadow:0 0 60px rgba(95,168,50,.08), 0 32px 80px rgba(0,0,0,.6);
-  transform:translateY(-8px);
-  z-index:2;
-}
-.plan-card.pro:hover{transform:translateY(-14px);}
-
-/* Badge mais escolhido */
-.plan-badge{
-  position:absolute;top:18px;right:18px;
-  background:var(--gold);color:var(--bg);
-  font-size:.6rem;font-weight:800;letter-spacing:2px;
-  text-transform:uppercase;padding:4px 10px;border-radius:4px;
-  font-family:'Syne',sans-serif;
-}
-
-/* Label do plano */
-.plan-label{
-  font-size:.62rem;font-weight:800;letter-spacing:3px;
-  text-transform:uppercase;color:var(--text3);
-  margin-bottom:20px;font-family:'Syne',sans-serif;
-}
-.plan-card.pro .plan-label{color:var(--accent2);}
-
-/* Preço grande */
-.plan-price-row{
-  display:flex;align-items:flex-end;gap:2px;
-  margin-bottom:4px;line-height:1;
-}
-.plan-currency{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:1.1rem;color:var(--text3);
-  padding-bottom:10px;
-}
-.plan-value{
-  font-family:'Syne',sans-serif;font-weight:800;
-  font-size:5rem;color:var(--text);
-  letter-spacing:-4px;line-height:1;
-  font-style:italic;
-}
-.plan-period{
-  font-size:.8rem;color:var(--text3);
-  padding-bottom:10px;margin-left:2px;
-}
-
-/* Subtítulo do preço */
-.plan-price-sub{
-  font-size:.72rem;color:var(--text3);
-  margin-bottom:24px;padding-bottom:24px;
-  border-bottom:1px solid var(--border);
-  line-height:1.5;
-}
-
-/* Features */
-.plan-features{
-  display:flex;flex-direction:column;gap:11px;
-  margin-bottom:28px;
-}
-.plan-feat{
-  display:flex;align-items:flex-start;gap:10px;
-  font-size:.82rem;color:var(--text2);line-height:1.4;
-}
-.plan-feat-icon{
-  width:18px;height:18px;border-radius:50%;flex-shrink:0;
-  background:rgba(95,168,50,.12);border:1px solid rgba(95,168,50,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:9px;color:var(--accent2);margin-top:1px;
-}
-
-/* Botões */
-.plan-btn{
-  width:100%;padding:14px;border-radius:10px;
-  font-family:'Syne',sans-serif;font-weight:700;font-size:.86rem;
-  cursor:pointer;transition:all .2s;text-align:center;
-  display:block;border:none;letter-spacing:.3px;
-}
-.plan-btn-outline{
-  background:none;border:1px solid var(--border2);
-  color:var(--text2);
-}
-.plan-btn-outline:hover{border-color:var(--accent);color:var(--accent2);}
-.plan-btn-gold{
-  background:var(--gold);color:var(--bg);
-  box-shadow:0 4px 24px rgba(196,154,46,.25);
-}
-.plan-btn-gold:hover{background:var(--gold2);box-shadow:0 8px 32px rgba(196,154,46,.4);transform:translateY(-1px);}
-
-/* Rodapé do card */
-.plan-footer{
-  margin-top:14px;text-align:center;
-  font-size:.65rem;color:var(--text3);
-  display:flex;align-items:center;justify-content:center;gap:6px;
-}
-.plan-footer a{color:var(--text3);text-decoration:underline;text-underline-offset:2px;cursor:pointer;}
-.plan-footer a:hover{color:var(--text2);}
-.plan-sep{opacity:.3;}
-
-@media(max-width:900px){
-  .planos-grid{grid-template-columns:1fr;padding:0 20px 60px;}
-  .plan-card{margin:0 0 14px;}
-  .plan-card.pro{transform:none;}
-  .planos-header{padding:60px 20px 40px;}
-  .planos-user-tag{display:none;}
-}
 
 
 /* ── AUTH MODAL ── */
@@ -890,8 +741,8 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
 .cal-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;margin-top:5px;}
 .plantio{background:var(--accent);}
 .colheita{background:var(--gold);}
-.defensivo{background:var(--danger);}
-.adubacao{background:var(--info);}
+.defensivo{background:#a89be0;}
+.adubacao{background:#7eb8c9;}
 
 /* ── DIÁRIO DE CAMPO ── */
 .diario-form{
@@ -1155,13 +1006,13 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
 
 /* CAL DEMO */
 .ftp-cal-demo{display:flex;flex-direction:column;gap:10px;width:100%;max-width:340px;}
-.ftp-cal-month{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px;}
-.ftp-cal-header{font-size:.65rem;font-weight:700;color:var(--accent2);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
-.ftp-cal-item{font-size:.78rem;padding:5px 0;border-bottom:1px solid var(--border);color:var(--text2);}
+.ftp-cal-month{background:#0d1f12;border:1px solid rgba(95,168,50,.18);border-radius:10px;padding:14px;}
+.ftp-cal-header{font-size:.65rem;font-weight:700;color:#a8c9a0;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px;}
+.ftp-cal-item{font-size:.78rem;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.06);color:#c8d9c4;}
 .ftp-cal-item:last-child{border:none;padding-bottom:0;}
-.ftp-cal-item.plantio{color:var(--accent3);}
-.ftp-cal-item.defensivo{color:#ff9999;}
-.ftp-cal-item.adubacao{color:#88bbee;}
+.ftp-cal-item.plantio{color:#8ecf7a;}
+.ftp-cal-item.defensivo{color:#b8b0d8;}
+.ftp-cal-item.adubacao{color:#8bbccc;}
 
 /* DIARY DEMO */
 .ftp-diary-demo{display:flex;flex-direction:column;gap:10px;width:100%;max-width:360px;}
@@ -1280,7 +1131,6 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
     <div class="nav-links">
       <a href="#como-funciona" class="nav-link">Plataforma</a>
       <a href="#funcionalidades" class="nav-link">Recursos</a>
-      <a href="#planos" class="nav-link nav-link-plans">Planos</a>
       <a href="#depoimentos" class="nav-link">Feedbacks</a>
     </div>
     <div class="nav-btns">
@@ -1661,58 +1511,7 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
     </div>
   </div>
 
-  <!-- PLANOS -->
-  <div id="planos">
-    <div class="planos-header reveal">
-      <div class="sec-label">Planos · PIX único</div>
-      <h2 class="planos-hero-title">Acesso completo.<br>Pagamento <span class="pix-word">via PIX.</span></h2>
-    </div>
-    <div class="planos-grid">
-      <div class="plan-card reveal">
-        <div class="plan-label">Starter</div>
-        <div class="plan-price-row"><span class="plan-currency">R$</span><span class="plan-value">97</span><span class="plan-period">/mês</span></div>
-        <div class="plan-price-sub">R$ 97,00 via PIX · renovação manual · até 5 clientes</div>
-        <div class="plan-features">
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Consultor IA ilimitado</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Motor de Risco + NDE em tempo real</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Cotação CBOT ao vivo</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Gestão de até 5 clientes</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Relatórios PDF</div>
-        </div>
-        <button class="plan-btn plan-btn-outline" onclick="openAuth('cadastro')">Ir para o App →</button>
-        <div class="plan-footer"><span>PIX único</span><span class="plan-sep">·</span><a onclick="openAuth('cadastro')">ver contrato</a></div>
-      </div>
-      <div class="plan-card pro reveal reveal-delay-1">
-        <div class="plan-badge">MAIS ESCOLHIDO</div>
-        <div class="plan-label">Pro</div>
-        <div class="plan-price-row"><span class="plan-currency">R$</span><span class="plan-value">197</span><span class="plan-period">/mês</span></div>
-        <div class="plan-price-sub">R$ 197,00 via PIX · renovação manual · até 25 clientes</div>
-        <div class="plan-features">
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Tudo do Starter</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Até 25 clientes na carteira</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Dashboard analítico da carteira</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Diário de campo georreferenciado</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Prioridade no suporte</div>
-        </div>
-        <button class="plan-btn plan-btn-gold" onclick="openAuth('cadastro')">Ir para o App →</button>
-        <div class="plan-footer"><span>PIX único</span><span class="plan-sep">·</span><a onclick="openAuth('cadastro')">ver contrato</a></div>
-      </div>
-      <div class="plan-card reveal reveal-delay-2">
-        <div class="plan-label">Expert</div>
-        <div class="plan-price-row"><span class="plan-currency">R$</span><span class="plan-value">397</span><span class="plan-period">/mês</span></div>
-        <div class="plan-price-sub">R$ 397,00 via PIX · renovação manual · clientes ilimitados</div>
-        <div class="plan-features">
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Tudo do Pro</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Clientes ilimitados</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Suporte prioritário direto</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Personalização de perfil</div>
-          <div class="plan-feat"><div class="plan-feat-icon">✓</div>Acesso antecipado a novidades</div>
-        </div>
-        <button class="plan-btn plan-btn-outline" onclick="openAuth('cadastro')">Ir para o App →</button>
-        <div class="plan-footer"><span>PIX único</span><span class="plan-sep">·</span><a onclick="openAuth('cadastro')">ver contrato</a></div>
-      </div>
-    </div>
-  </div>
+
 
   <!-- DEPOIMENTOS -->
   <div id="depoimentos">
@@ -1789,7 +1588,6 @@ footer{padding:40px 64px;border-top:1px solid var(--border);background:var(--sur
           <a href="#como-funciona">Como funciona</a>
           <a href="#funcionalidades">Recursos</a>
           <a href="#comparativo">Comparativo</a>
-          <a href="#planos">Planos</a>
           <a href="#depoimentos">Feedbacks</a>
         </div>
       </div>
@@ -2803,13 +2601,7 @@ function showFeatTab(idx, btn) {
   btn.classList.add('active');
 }
 
-// Auto-rotate feat tabs
-let ftIdx = 0;
-setInterval(() => {
-  ftIdx = (ftIdx + 1) % 6;
-  const btn = document.querySelectorAll('.feat-tab-btn')[ftIdx];
-  if (btn) showFeatTab(ftIdx, btn);
-}, 4000);
+
 
 // Animated counters on scroll
 function animateCounters() {
